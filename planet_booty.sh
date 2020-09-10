@@ -1,0 +1,3 @@
+setup_environment.sh
+train_planet_booty.sh
+run_planet_booty.sh
