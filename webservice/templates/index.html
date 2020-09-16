@@ -1,0 +1,141 @@
+$def with(content)
+    <div class="tm-container">        
+        <div>
+            <div class="tm-row pt-4">
+                <div class="tm-col-left">
+                    <div class="tm-site-header media">
+                        <!-- <i class="fas fa-toilet-paper fa-3x mt-1 tm-logo"></i> -->
+                        <img src="/static/img/pb_booty_trans.png" width="65px"></i>
+                        <div class="media-body">
+                            <h1 class="tm-sitename text-uppercase">Planet Booty</h1>
+                            <p class="tm-slogon">lyric generator</p>
+                        </div>        
+                    </div>
+                </div>
+                <div class="tm-col-right">
+                    <nav class="navbar navbar-expand-lg" id="tm-main-nav">
+                        <button class="navbar-toggler toggler-example mr-0 ml-auto" type="button" 
+                            data-toggle="collapse" data-target="#navbar-nav" 
+                            aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span><i class="fas fa-bars"></i></span>
+                        </button>
+                        <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
+                            <ul class="navbar-nav text-uppercase">
+                                <li class="nav-item active">
+                                    <a class="nav-link tm-nav-link" href="/index">Generate <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tm-nav-link" href="/songs">Songs</a>
+                                </li>
+<!--
+                                <li class="nav-item">
+                                    <a class="nav-link tm-nav-link" href="services.html">Services</a>
+                                </li>                            
+-->
+                                <li class="nav-item">
+                                    <a class="nav-link tm-nav-link" href="/about">About</a>
+                                </li>
+                            </ul>                            
+                        </div>                        
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="tm-row">
+                <div class="tm-col-left"></div>
+                <main class="tm-col-right">
+                    <section class="tm-content">
+<h1>Planet Booty Generator</h1> 
+<form action="/index" method="POST">
+<table width="60%">
+
+<tr>
+<td colspan=2>
+Next word generation up to <i>length</i>. Use <i>temperature</i> to increase randomness, <i>seed</i> for the initial random seed of randomness, and <i>top p</i> for top number of words to consider when considering the next word to choose.
+</td>
+</tr>
+  <tr>
+    <td align="left">Start Text: </td>
+    <td align="right">
+        <input type="text" value="i want your" name="start_text" id="start_text">
+    </td>
+  </tr>
+
+  <tr>
+    <td align="left">Tempature: <span id="temperature_span"></span></td>
+    <td align="right">
+      <div class="slidecontainer">
+        <input type="range" min="0.0" max="5.0" value="1.618" step="0.0001" class="slider" id="temperature_input" name="temperature_input">
+     </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="left">Seed: <span id="seed_span"></span></td>
+    <td align="right">
+      <div class="slidecontainer">
+        <input type="range" min="0" max="100" value="42" step="1" class="slider" id="seed_input" name="seed_input">
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="left">Top P: <span id="top_p_span"></span></td>
+    <td align="right">
+      <div class="slidecontainer">
+        <input type="range" min="0.0" max="100" value="40" step="0.01" class="slider" id="top_p_input" name="top_p_input">
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="left">Length: <span id="length_span"></span></td>
+    <td align="right">
+      <div class="slidecontainer">
+        <input type="range" min="0" max="1000" value="100" step="10" class="slider" id="length_input" name="length_input">
+      </div>
+    </td>
+  </tr>
+</table>
+
+<input type="submit" name="generate" value="Generate">
+</form>
+
+<script>
+var temp_slider = document.getElementById("temperature_input");
+var temp_output = document.getElementById("temperature_span");
+temp_output.innerHTML = temp_slider.value;
+temp_slider.oninput = function() {
+  temp_output.innerHTML = this.value;
+}
+var seed_slider = document.getElementById("seed_input");
+var seed_output = document.getElementById("seed_span");
+seed_output.innerHTML = seed_slider.value;
+seed_slider.oninput = function() {
+  seed_output.innerHTML = this.value;
+}
+var top_p_slider = document.getElementById("top_p_input");
+var top_p_output = document.getElementById("top_p_span");
+top_p_output.innerHTML = top_p_slider.value;
+top_p_slider.oninput = function() {
+  top_p_output.innerHTML = this.value;
+}
+var length_slider = document.getElementById("length_input");
+var length_output = document.getElementById("length_span");
+length_output.innerHTML = length_slider.value;
+length_slider.oninput = function() {
+  length_output.innerHTML = this.value;
+}
+</script>
+
+<table width="60%">
+  <tr>
+<td>
+<p style="text-align: right;">
+$for line in content.split("\n"):
+    $:line</br>
+</p>
+</td>
+</tr>
+</table>
+

@@ -6,6 +6,6 @@ sudo apt-get install jq
 
 sh download_model.sh 117M # download original OA model
 
-virtualenv --python=python3.6 venv
-pip install -r requirements.freeze
+# virtualenv --python=python3.6 venv
+# pip install -r requirements.freeze
 
