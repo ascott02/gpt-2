@@ -6,6 +6,9 @@ https://templatemo.com/tm-550-diagoona
 
 */
 
+/* html { overflow-y: hidden; } */
+
+
 body {
     font-family: 'Open Sans', Arial, sans-serif;
     font-size: 17px;
@@ -91,7 +94,7 @@ p { line-height: 1.9; }
  * */
 
 .tm-bg-left {
-    /* border-right: 50vw solid rgba(0,0,0,0.5); */
+    border-right: 230px solid rgba(0,0,0,0.5); 
     /* border-right: calc(100vh * .2) solid rgba(0,0,0,0.5); */
     /* border-right: calc(.2 * (100vh - height) + 260) solid rgba(0,0,0,0.5); */
     border-top: 100vh solid transparent;

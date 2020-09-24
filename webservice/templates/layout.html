@@ -96,42 +96,14 @@ $:content
             <div class="tm-bg-right"></div>
         </div>
 
-
     </div>
 
+<script src="/static/js/jquery-3.4.1.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.backstretch.min.js"></script>
+<script src="/static/js/templatemo-script.js"></script>
 
-    <script src="/static/js/jquery-3.4.1.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/jquery.backstretch.min.js"></script>
-    <script src="/static/js/templatemo-script.js"></script>
 
-<script>
-    // var y1 = $('#tm-bg-left').height() 
-    // var y2 = $('#tm-content').height() 
-    // var x1 = $('#body').width() / 2.0
-    // var x2 = .25 * (y2 - y1) + x1
-    // $('#tm-bg-left').attr("border-right", x2)
-    function changeX() {
-        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-
-        var x1 = document.getElementsByClassName('tm-content')[0].offsetWidth/2;
-        var y1 = vh
-        // var y1 = document.height;
-        // var y2 = document.getElementsByClassName('tm-content')[0].offsetHeight;
-        var y2 = document.getElementsByClassName('tm-bg-left')[0].offsetHeight;
-        // var x1 = document.width / 2.0;
-        var x2 = ((y2 - y1) / 2) + x1
-        // var x2 = 0
-        console.log("x1: " + x1)
-        console.log("x2: " + x2)
-        console.log("y1: " + y1)
-        console.log("y2: " + y2)
-        document.getElementsByClassName("tm-bg-left")[0].setAttribute("border-right", Math.floor(x2) + "px solid rgba(0,0,0,0.5)");
-        document.getElementsByClassName("tm-bg-right")[0].setAttribute("height", Math.floor(vh) + "px solid rgba(0,0,0,0.5)");
-    }
-    changeX();
-    </script>
 
 
 </body>
