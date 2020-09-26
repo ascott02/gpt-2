@@ -22,21 +22,21 @@ const setBgOverlay = () => {
 
     // const x1 = document.getElementsByClassName('tm-content')[0].offsetWidth/2;
     const y1 = $(window).height(); 
-    const y2 = document.getElementsByClassName('tm-bg-left')[0].offsetHeight;
+    const y2 = document.getElementsByClassName('.tm-bg-left')[0].offsetHeight;
     const x1 = Math.floor($(window).width() / 2.0);
     const x2 = Math.floor(((y2 - y1) / 2) + x1)
 
-        console.log("x1: " + x1)
-        console.log("x2: " + x2)
-        console.log("y1: " + y1)
-        console.log("y2: " + y2)
+    console.log("x1: " + x1)
+    console.log("x2: " + x2)
+    console.log("y1: " + y1)
+    console.log("y2: " + y2)
     const newValue = x2 + "px solid rgba(0,0,0,0.5)";
     $('.tm-bg-left').css({ "border-right":newValue });
 
     // if(windowWidth > 768) {
-         tmBgLeft.css('border-left', `0`)
-                 .css('border-top', `${bgHeight}px solid transparent`)
-                 .css('border-right', x2);                
+    //      tmBgLeft.css('border-left', `0`)
+    //              .css('border-top', `${bgHeight}px solid transparent`)
+    //              .css('border-right', x2);                
     // } else {
     //     tmBgLeft.css('border-left', `${windowWidth}px solid transparent`)
     //             .css('border-top', `0`)

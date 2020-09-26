@@ -32,8 +32,17 @@ hparams = model.default_hparams()
 with open(os.path.join('../models', model_name, 'hparams.json')) as f:
     hparams.override_from_dict(json.load(f))
 
+temperature = 1.618
 batch_size = 1
+length = 100
+top_p = 40
+top_k = 10
 seed = 42
+
+
+
+
+
 
 
 def generate_song(length=1000, nsamples=1, batch_size=1, seed=42, top_k=0, top_p=40, temperature=1.618, start_text="hello"):
@@ -47,6 +56,7 @@ def generate_song(length=1000, nsamples=1, batch_size=1, seed=42, top_k=0, top_p
         np.random.seed(seed)
         tf.set_random_seed(seed)
 
+
         output = sample.sample_sequence(
             hparams=hparams, length=length,
             # start_token=enc.encoder['<|endoftext|>'],
@@ -58,6 +68,7 @@ def generate_song(length=1000, nsamples=1, batch_size=1, seed=42, top_k=0, top_p
         saver = tf.train.Saver()
         ckpt = tf.train.latest_checkpoint(os.path.join('../models', model_name))
         saver.restore(sess, ckpt)
+
 
         generated = 0
         text_output = start_text
@@ -113,12 +124,16 @@ class songs:
         songs_file = "../planet_booty_songs.json"
         with open(songs_file, "r") as f:
             songs = json.load(f)
-        page = """<table width="60%"><tr><td width="20%" align="left" valign="top">"""
-
+        page = "<form action='/songs'>"
+        page += "<select name='song' id='song' onchange='this.form.submit()'>"
         for song in songs['songs']:
-            page += "<a href=/songs?song=" + quote(song['name']) + ">" + song['name'].replace(u"\u2018", "'").replace(u"\u2019", "'").strip().lstrip() + "</a><br>"
+            # page += "<a href=/songs?song=" + quote(song['name']) + ">" + song['name'].replace(u"\u2018", "'").replace(u"\u2019", "'").strip().lstrip() + "</a><br>"
+            page += "<option value='" + quote(song['name']) + "'>" + song['name'].replace(u"\u2018", "'").replace(u"\u2019", "'").strip().lstrip() + "</option>"
+        page += "</select>"
+        page += "</form>"
+        # page += """<table width="60%"><tr><td width="20%" align="left" valign="top">"""
 
-        page += """</td><td width="60%" align="right" valign="top">"""
+        # page += """</td><td width="60%" align="left" valign="top">"""
         # web.debug(songs)
 
         try:
@@ -129,9 +144,9 @@ class songs:
                     for line in tsong['lyrics'].split("\n"):
                         page += line + "<br>"
         except:
-            page += "select a song"
+            page += ""
 
-        page += """</td></tr></table>"""
+        # page += """</td></tr></table>"""
 
 
 
@@ -170,5 +185,8 @@ class login:
 
 
 if __name__ == "__main__":
+
+
+
     app.run()
 
